@@ -36,10 +36,7 @@ function parseCSV(text) {
 
 function generateTable(data) {
     const table = document.createElement("table");
-    table.style.width = '100%';
-    table.style.borderCollapse = 'collapse';
-    table.style.textAlign = 'left';
-    table.style.marginTop = '20px';
+    table.className = 'table-style'
 
     data.forEach((row, index) => {
         const tr = document.createElement("tr");
