@@ -17,13 +17,36 @@ function selectOption(option) {
     document.getElementById("submitButton").classList.remove("hidden");
 }
 
-function generateTable() {
-    // Placeholder for generating table based on inputs
-    const number = document.getElementById("numberInput").value;
-    console.log("Generate table for number:", number);
-    // Show table or generate content here
-    // For now, just showing it's selected
+async function fetchAndDisplayCSV() {
+    try {
+        // Adjust the path to where your CSV file is located relative to the root of your website
+        const response = await fetch('tables/arxiv_results.csv');
+        const csvText = await response.text();
+        const data = parseCSV(csvText);
+        generateTable(data); // Use the previously discussed generateTable function
+    } catch (error) {
+        console.error("Failed to fetch CSV:", error);
+    }
+}
+
+function parseCSV(text) {
+    const lines = text.split('\n').map(line => line.trim()).filter(line => line);
+    return lines.map(line => line.split(','));
+}
+
+function generateTable(data) {
+    const table = document.createElement("table");
+    data.forEach((row, index) => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+            const td = document.createElement(index === 0 ? "th" : "td");
+            td.textContent = cell;
+            tr.appendChild(td);
+        });
+        table.appendChild(tr);
+    });
     const output = document.getElementById("outputTable");
-    output.innerHTML = "<p>Table would be generated based on option and number: " + number + "</p>";
+    output.innerHTML = ""; // Clear previous content
+    output.appendChild(table);
     output.classList.remove("hidden");
 }
