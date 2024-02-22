@@ -7,23 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Welcome to My Modern Website</h1>
+    </header>
     <div id="passwordScreen" class="password-screen">
         <input type="password" id="passwordInput" placeholder="Enter password" />
         <button onclick="checkPassword()">Submit</button>
     </div>
     <div id="mainContent" class="main-content hidden">
+        <h2>Select a Category:</h2>
         <div class="option-selection">
             <!-- Example Option Buttons -->
-            <button class="option-button" onclick="selectOption(1)">Option 1</button>
-            <button class="option-button" onclick="selectOption(2)">Option 2</button>
-            <button class="option-button" onclick="selectOption(3)">Option 3</button>
-            <button class="option-button" onclick="selectOption(4)">Option 4</button>
+            <button class="option-button" onclick="selectOption(1)">Public Health, Social Sciences, and Humanities</button>
+            <button class="option-button" onclick="selectOption(2)">Biological & Chemical Sciences | Physical Sciences & Engineering</button>
+            <button class="option-button" onclick="selectOption(3)">Medical Sciences</button>
         </div>
         <input type="number" id="numberInput" placeholder="Enter a number" class="hidden" />
         <button id="submitButton" onclick="fetchAndDisplayCSV()" class="hidden">Submit</button>
         <!-- Placeholder for Table -->
         <div id="outputTable" class="hidden"></div>
     </div>
+    <footer>
+        <p>&copy; 2024 RR/ID. All rights reserved.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
