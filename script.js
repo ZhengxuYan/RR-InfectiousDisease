@@ -36,16 +36,30 @@ function parseCSV(text) {
 
 function generateTable(data) {
     const table = document.createElement("table");
-    table.className = 'table-style'
+    table.setAttribute('class', 'data-table'); // Class for external styling if needed
+    table.style.width = '100%';
+    table.style.borderCollapse = 'collapse';
+    table.style.marginTop = '20px';
 
     data.forEach((row, index) => {
         const tr = document.createElement("tr");
-        tr.style.backgroundColor = index % 2 === 0 ? '#f2f2f2' : '#ffffff'; // Zebra striping for rows
+        if (index % 2 === 0) {
+            tr.style.backgroundColor = '#f9f9f9'; // Lighter gray for even rows
+        } else {
+            tr.style.backgroundColor = '#e9e9e9'; // Darker gray for odd rows
+        }
+
         row.forEach(cell => {
             const cellElement = document.createElement(index === 0 ? "th" : "td");
             cellElement.textContent = cell;
-            cellElement.style.padding = '8px';
-            cellElement.style.border = '1px solid #dddddd';
+            cellElement.style.padding = '10px';
+            cellElement.style.border = '1px solid #ddd';
+            cellElement.style.borderBottom = '2px solid #ccc'; // Slightly darker border for the bottom
+            if (index === 0) {
+                cellElement.style.backgroundColor = '#4CAF50'; // Header background color
+                cellElement.style.color = 'white'; // Header text color
+                cellElement.style.fontWeight = 'bold';
+            }
             tr.appendChild(cellElement);
         });
         table.appendChild(tr);
@@ -56,4 +70,5 @@ function generateTable(data) {
     output.appendChild(table);
     output.classList.remove("hidden");
 }
+
 

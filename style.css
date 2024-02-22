@@ -36,23 +36,29 @@ body {
     padding: 8px;
 }
 
-/* Add this to your CSS file */
-.table-style {
+/* in your stylesheet */
+.data-table {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
     margin-top: 20px;
 }
 
-.table-style th, .table-style td {
-    padding: 8px;
-    border: 1px solid #dddddd;
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-bottom: 2px solid #ccc;
 }
 
-.table-style tr:nth-child(even) {
-    background-color: #f2f2f2;
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.table-style tr:nth-child(odd) {
-    background-color: #ffffff;
+.data-table tr:nth-child(odd) {
+    background-color: #e9e9e9;
+}
+
+.data-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
 }
