@@ -36,17 +36,27 @@ function parseCSV(text) {
 
 function generateTable(data) {
     const table = document.createElement("table");
+    table.style.width = '100%';
+    table.style.borderCollapse = 'collapse';
+    table.style.textAlign = 'left';
+    table.style.marginTop = '20px';
+
     data.forEach((row, index) => {
         const tr = document.createElement("tr");
+        tr.style.backgroundColor = index % 2 === 0 ? '#f2f2f2' : '#ffffff'; // Zebra striping for rows
         row.forEach(cell => {
-            const td = document.createElement(index === 0 ? "th" : "td");
-            td.textContent = cell;
-            tr.appendChild(td);
+            const cellElement = document.createElement(index === 0 ? "th" : "td");
+            cellElement.textContent = cell;
+            cellElement.style.padding = '8px';
+            cellElement.style.border = '1px solid #dddddd';
+            tr.appendChild(cellElement);
         });
         table.appendChild(tr);
     });
+
     const output = document.getElementById("outputTable");
     output.innerHTML = ""; // Clear previous content
     output.appendChild(table);
     output.classList.remove("hidden");
 }
+
