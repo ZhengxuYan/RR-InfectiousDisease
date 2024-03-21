@@ -18,9 +18,7 @@ header h1 {
 }
 
 .password-screen, .main-content {
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto;
+    margin: 20px 0; /* Only vertical margin is retained */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -28,7 +26,8 @@ header h1 {
 }
 
 input[type="password"], input[type="number"] {
-    width: calc(100% - 20px);
+    width: 100%; /* Adjusted to account for padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -49,60 +48,50 @@ button:hover {
 }
 
 .option-button {
-    display: block; /* Make buttons span the full width */
+    display: block;
     width: 100%;
     margin-bottom: 10px;
 }
 
-
-/* Ensures that table does not exceed the width of its container */
+/* Container for the table should allow for full width */
 .data-table-container {
     width: 100%;
-    overflow-x: auto; /* Allows horizontal scrolling on smaller screens */
-  }
-  
-  /* Styles for the table */
-  .data-table {
+    overflow-x: auto;
+}
+
+.data-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    table-layout: fixed; /* Fixes column widths */
-  }
-  
-  .data-table th,
-  .data-table td {
+}
+
+.data-table th,
+.data-table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
-    word-wrap: break-word; /* Allows long words to break and wrap onto the next line */
-    overflow: hidden; /* Hides text that overflows the cell's box */
-    text-overflow: ellipsis; /* Adds an ellipsis to text that overflows */
-    max-width: 150px; /* You can adjust this value as needed */
-  }
-  
-  /* Header specific styling */
-  .data-table th {
+    word-wrap: break-word;
+}
+
+.data-table th {
     background-color: #4CAF50;
     color: white;
     font-weight: bold;
-  }
-  
-  /* Add responsive behavior to the table */
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .data-table th,
     .data-table td {
-      padding: 5px; /* Smaller padding for smaller screens */
-      font-size: 12px; /* Smaller font size for smaller screens */
+        padding: 5px;
+        font-size: 12px;
     }
-  }  
+}
 
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
 
