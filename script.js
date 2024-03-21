@@ -33,7 +33,7 @@ async function fetchAndDisplayJSON() {
       "Biological & Chemical Sciences | Physical Sciences & Engineering": "team3_results.json"
     };
     const response = await fetch("tables/" + team_dict[selectedOptionText]);
-    const jsonData = await response.json(); // Parse the response as JSON
+    let jsonData = await response.json(); // Parse the response as JSON
 
     // Get the number of rows the user wants to display
     const numberOfRows = parseInt(document.getElementById("numberInput").value, 10);
