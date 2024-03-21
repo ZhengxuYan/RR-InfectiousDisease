@@ -27,8 +27,13 @@ function selectOption(optionNumber) {
 
 async function fetchAndDisplayCSV() {
   try {
-    // Adjust the path to where your CSV file is located relative to the root of your website
-    const response = await fetch("tables/arxiv_results.csv");
+    // const response = await fetch("tables/arxiv_results.csv");
+    team_dict = {
+        "Public Health, Social Sciences, and Humanities": "team1_results.csv",
+        "Medical Sciences": "team2_results.csv",
+        "Biological & Chemical Sciences | Physical Sciences & Engineering": "team3_results.csv"
+    }
+    const response = await fetch("tables/" + team_dict[selectedOptionText]);
     const csvText = await response.text();
     const data = parseCSV(csvText);
     generateTable(data); // Use the previously discussed generateTable function
