@@ -82,64 +82,6 @@ function generateTableRow(table, rowData, isHeader) {
   table.appendChild(tr);
 }
 
-async function fetchAndDisplayJSON() {
-    try {
-      // Adjust the dictionary to point to JSON files instead of CSV
-      const team_dict = {
-        "Public Health, Social Sciences, and Humanities": "team1_results.json",
-        "Medical Sciences": "team2_results.json",
-        "Biological & Chemical Sciences | Physical Sciences & Engineering": "team3_results.json"
-      };
-      const response = await fetch("tables/" + team_dict[selectedOptionText]);
-      const jsonData = await response.json(); // Parse the response as JSON
-      generateTableFromJSON(jsonData); // Use a modified function to generate table from JSON
-    } catch (error) {
-      console.error("Failed to fetch JSON:", error);
-    }
-  }
-  
-  function generateTableFromJSON(data) {
-    const input = document.getElementById("passwordInput").value;
-    if (input !== correctPassword) {
-      alert("Please enter the correct password first.");
-      return;
-    }
-    const table = document.createElement("table");
-    table.setAttribute("class", "data-table");
-    table.style.width = "100%";
-    table.style.borderCollapse = "collapse";
-    table.style.marginTop = "20px";
-  
-    // Assuming the first object's keys can be headers
-    if (data.length > 0) {
-      const headers = Object.keys(data[0]);
-      generateTableRow(table, headers, true); // Generate the header row
-    }
-  
-    // Generate table rows from JSON data
-    data.forEach((item) => {
-      const row = Object.values(item);
-      generateTableRow(table, row, false);
-    });
-  
-    const output = document.getElementById("outputTable");
-    output.innerHTML = ""; // Clear previous content
-    output.appendChild(table);
-    output.classList.remove("hidden");
-  }
-  
-  function generateTableRow(table, rowData, isHeader) {
-    const tr = document.createElement("tr");
-    rowData.forEach((cell, index) => {
-      const cellElement = document.createElement(isHeader ? "th" : "td");
-      cellElement.textContent = cell;
-      // Apply styling as needed, similar to the original function
-      tr.appendChild(cellElement);
-    });
-    table.appendChild(tr);
-  }
-  
-
 // async function fetchAndDisplayCSV() {
 //   try {
 //     // const response = await fetch("tables/arxiv_results.csv");
