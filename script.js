@@ -29,8 +29,8 @@ async function fetchAndDisplayJSON() {
   try {
     const team_dict = {
       "Public Health, Social Sciences, and Humanities": "team1_llm_results.json",
-      "Medical Sciences": "team2_llm_results.json",
-      "Biological & Chemical Sciences | Physical Sciences & Engineering": "team3_llm_results.json"
+      "Biological & Chemical Sciences | Physical Sciences & Engineering": "team2_llm_results.json",
+      "Medical Sciences": "team3_llm_results.json",
     };
     const response = await fetch("tables/" + team_dict[selectedOptionText]);
     let jsonData = await response.json(); // Parse the response as JSON
